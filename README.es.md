@@ -57,42 +57,31 @@ Un nuevo repositorio se creará en tu cuenta.
 
 
 ### Paso 2: Instalación y Configuración de DVWA:
-- [ ] Descargar DVWA desde el enlace proporcionado
+
 
 ```sh
-cd /var/www/html 
-sudo apt-get install wget unzip
-sudo wget https://storage.googleapis.com/breathecode/virtualbox/DVWA.zip sudo unzip DVWA.zip 
-sudo mv DVWA-master DVWA
+sudo bash -c "$(curl --fail --show-error --silent --location https://raw.githubusercontent.com/IamCarron/DVWA-Script/main/Install-DVWA.sh)"
+```
 
-```
-- [ ] Configurar DVWA
-Cambia al directorio DVWA y renombra el archivo de configuración
-```sh
-cd DVWA/config 
-sudo cp config.inc.php.dist config.inc.php
-```
-- [ ] Edita el archivo de configuración `config.inc.php` para configurar las credenciales de MariaDB:
-```ssh
-sudo nano config.inc.php
-```
-> 💡 IMPORTANTE: Asegúrate de que las siguientes líneas tengan las credenciales correctas:
-* $_DVWA[ 'db_user' ] = 'root';
-* $_DVWA[ 'db_password' ] = 'tu_contraseña_de_root'; 
-* $_DVWA[ 'db_database' ] = 'dvwa';
+##### Ejecuta manualmente el script
 
-- [ ] Configurar la Base de Datos
-Inicia sesión en MariaDB y crea la base de datos DVWA
-```sh
-sudo mysql -u root -p 
-CREATE DATABASE dvwa; 
-EXIT;
-```
-- [ ] Ajustar Permisos
-```sh
-sudo chown -R www-data:www-data /var/www/html/DVWA/
-sudo chmod -R 755 /var/www/html/DVWA/
-```
+1. **Descarga el script:**
+
+   ```sh
+   wget https://raw.githubusercontent.com/IamCarron/DVWA-Script/main/Install-DVWA.sh
+   ```
+
+2. **Haz el script ejecutable:**
+
+   ```sh
+   chmod +x Install-DVWA.sh
+   ```
+
+3. **Lanza el script como root:**
+
+   ```sh
+   sudo ./Install-DVWA.sh
+   ```
 - [ ] Abre un navegador en tu VM y ve a http://localhost/DVWA/setup.php
 - [ ] Revisa la configuración y Haz clic en "Create / Reset Database".
 
